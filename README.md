@@ -133,7 +133,7 @@ The billing logic lives directly inside `booking.html` as an inline `<script>`:
 - For **Pest Control** → flat rate, hours dropdown is hidden automatically, bill shows instantly
 - Bill Summary box is hidden by default and only appears when both service and hours are selected
 
-## 🎠 Carousel — inside `index.html`
+##  Carousel — inside `index.html`
 
 The reviews carousel is handled by inline JavaScript inside `index.html`:
 - `moveCarousel(direction)` → moves slides using arrow buttons
@@ -146,7 +146,7 @@ The reviews carousel is handled by inline JavaScript inside `index.html`:
 - Uses Tailwind's `hidden` class to show/hide answers
 - Changes `+` to `−` icon when open
 
-# 🔠 Font
+#  Font
 
 Uses **Poppins** from Google Fonts loaded via:
 ```html
