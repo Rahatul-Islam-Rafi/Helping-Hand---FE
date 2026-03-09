@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Helping Hand – Book a Service</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-amber-50 text-gray-900 min-h-screen flex flex-col">
+
+  <nav class="sticky top-0 z-50 bg-green-800 shadow-md">
+    <div class="w-full px-10 py-3 flex items-center justify-between">
+      <a href="../index.html" class="text-2xl font-bold text-yellow-300">Helping<span class="text-white">Hand</span></a>
+      <ul class="hidden md:flex gap-6 text-sm font-medium text-white/80">
+        <li><a href="../index.html" class="hover:text-yellow-300 transition-colors">Home</a></li>
+        <li><a href="contact.html" class="hover:text-yellow-300 transition-colors">Contact</a></li>
+      </ul>
+      <div class="flex gap-3">
+        <a href="login.html"
+          class="px-4 py-2 text-sm font-semibold border-2 border-white/50 text-white rounded-lg hover:bg-green-700 transition-colors">Login</a>
+        <a href="signup.html"
+          class="px-4 py-2 text-sm font-semibold bg-yellow-300 text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors">Sign
+          Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-1 flex items-center justify-center px-4 py-16 bg-gradient-to-br from-green-50 to-amber-50">
+    <div class="bg-white rounded-2xl shadow-lg w-full max-w-lg p-8">
+
+      <h2 class="text-3xl font-bold text-gray-900 mb-1">
+        Book a Service
+        <span id="selected-service" class="text-green-800 text-xl"></span>
+      </h2>
+      <p class="text-sm text-gray-500 mb-6">Fill in your details — we'll send a worker to you</p>
+
+      <form novalidate>
+
+        <div class="flex flex-col gap-1 mb-4">
+          <label for="name" class="text-sm font-medium text-gray-700">Your Name</label>
+          <input type="text" id="name" placeholder="Full name" required
+            class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent hover:border-gray-400 transition-colors" />
+        </div>
+
+        <div class="flex flex-col gap-1 mb-4">
+          <label for="phone" class="text-sm font-medium text-gray-700">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+880 1X XX XXX XXX" required
+            class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent hover:border-gray-400 transition-colors" />
+        </div>
+
+        <div class="flex flex-col gap-1 mb-4">
+          <label for="address" class="text-sm font-medium text-gray-700">Your Address</label>
+          <input type="text" id="address" placeholder="Street, area, city" required
+            class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent hover:border-gray-400 transition-colors" />
+        </div>
+
+        <div class="flex flex-col gap-1 mb-4">
+          <label for="service-select" class="text-sm font-medium text-gray-700">Select Service</label>
+          <select id="service-select" required onchange="calculateBill()"
+            class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent hover:border-gray-400 transition-colors bg-white">
+            <option value="">-- Choose a service --</option>
+            <option value="Housekeeping">🧹 Housekeeping</option>
+            <option value="Electrician">⚡ Electrician</option>
+            <option value="Mechanic">🔧 Mechanic</option>
+            <option value="Pest Control">🐛 Pest Control</option>
+            <option value="Interior Painting">🎨 Interior Painting</option>
+            <option value="Plumbing">🚿 Plumbing</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col gap-1 mb-4">
+          <label for="date" class="text-sm font-medium text-gray-700">Preferred Date</label>
+          <input type="date" id="date" required
+            class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent hover:border-gray-400 transition-colors" />
+        </div>
+
+        <div id="hours-section" class="flex flex-col gap-1 mb-4">
+          <label for="hours" class="text-sm font-medium text-gray-700">Number of Hours</label>
+          <select id="hours" onchange="calculateBill()"
+            class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent hover:border-gray-400 transition-colors bg-white">
+            <option value="">-- Select hours --</option>
+            <option value="1">1 Hour</option>
+            <option value="2">2 Hours</option>
+            <option value="3">3 Hours</option>
+            <option value="4">4 Hours</option>
+            <option value="5">5 Hours</option>
+            <option value="6">6 Hours</option>
+            <option value="8">8 Hours (Full Day)</option>
+          </select>
+        </div>
+
+        <div id="bill-summary" class="hidden mb-6 bg-green-50 border border-green-200 rounded-xl p-4">
+          <h4 class="text-sm font-semibold text-green-900 mb-3">📋 Bill Summary</h4>
+          <div class="flex justify-between text-sm text-gray-700 mb-1">
+            <span>Service</span>
+            <span id="bill-service" class="font-medium">—</span>
+          </div>
+          <div class="flex justify-between text-sm text-gray-700 mb-1">
+            <span>Rate per Hour</span>
+            <span id="bill-rate" class="font-medium">—</span>
+          </div>
+          <div class="flex justify-between text-sm text-gray-700 mb-3">
+            <span>Hours</span>
+            <span id="bill-hours" class="font-medium">—</span>
+          </div>
+          <hr class="border-green-200 mb-3" />
+          <div class="flex justify-between text-base font-bold text-green-900">
+            <span>Total Cost</span>
+            <span id="bill-total">৳0</span>
+          </div>
+          <p id="bill-note" class="hidden mt-2 text-xs text-gray-500 italic"></p>
+        </div>
+
+        <div class="flex flex-col gap-1 mb-6">
+          <label for="note" class="text-sm font-medium text-gray-700">Additional Notes <span
+              class="text-gray-400">(optional)</span></label>
+          <textarea id="note" placeholder="Describe the problem or any special instructions..." rows="4"
+            class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent hover:border-gray-400 transition-colors resize-none"></textarea>
+        </div>
+
+        <button type="submit"
+          class="w-full py-3 bg-green-800 text-white font-semibold rounded-lg hover:bg-green-900 transition-colors shadow-md">Confirm
+          Booking</button>
+
+        <div id="success-msg"
+          class="hidden mt-4 text-center text-sm text-green-800 bg-green-50 border border-green-300 rounded-lg py-3 px-4">
+          🎉 Booking confirmed! We will contact you shortly.
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 py-5 text-center text-sm">
+    © 2026 <span class="text-yellow-300 font-semibold">HelpingHand</span>. All rights reserved.
+  </footer>
+
+  <script>
+    const servicePrices = {
+      'Housekeeping': { rate: 500, flat: false },
+      'Electrician': { rate: 800, flat: false },
+      'Mechanic': { rate: 600, flat: false },
+      'Pest Control': { rate: 1200, flat: true },
+      'Interior Painting': { rate: 900, flat: false },
+      'Plumbing': { rate: 700, flat: false },
+    };
+
+    function calculateBill() {
+      const service = document.getElementById('service-select').value;
+      const hoursSection = document.getElementById('hours-section');
+      const hoursSelect = document.getElementById('hours');
+
+      if (!service) {
+        document.getElementById('bill-summary').classList.add('hidden');
+        hoursSection.classList.remove('hidden');
+        hoursSelect.value = '';
+        return;
+      }
+
+      const pricing = servicePrices[service];
+      if (!pricing) return;
+
+      const display = document.getElementById('selected-service');
+      if (display) display.textContent = '— ' + service;
+
+      if (pricing.flat) {
+        hoursSection.classList.add('hidden');
+        hoursSelect.value = '';
+        document.getElementById('bill-service').textContent = service;
+        document.getElementById('bill-rate').textContent = '৳' + pricing.rate + ' (flat rate)';
+        document.getElementById('bill-hours').textContent = 'N/A';
+        document.getElementById('bill-total').textContent = '৳' + pricing.rate.toLocaleString();
+        const noteEl = document.getElementById('bill-note');
+        noteEl.textContent = '* Fixed flat rate — no hourly charge applies.';
+        noteEl.classList.remove('hidden');
+        document.getElementById('bill-summary').classList.remove('hidden');
+      } else {
+        hoursSection.classList.remove('hidden');
+        const hours = hoursSelect.value;
+        document.getElementById('bill-note').classList.add('hidden');
+        if (!hours) {
+          document.getElementById('bill-summary').classList.add('hidden');
+          return;
+        }
+        const total = pricing.rate * parseInt(hours);
+        document.getElementById('bill-service').textContent = service;
+        document.getElementById('bill-rate').textContent = '৳' + pricing.rate + '/hr';
+        document.getElementById('bill-hours').textContent = hours + (hours === '1' ? ' hour' : ' hours');
+        document.getElementById('bill-total').textContent = '৳' + total.toLocaleString();
+        document.getElementById('bill-summary').classList.remove('hidden');
+      }
+    }
+  </script>
+
+  <script src="../js/script.js"></script>
+</body>
+
+</html>

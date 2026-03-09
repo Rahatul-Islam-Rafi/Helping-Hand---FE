@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Helping Hand</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body class="bg-amber-50 text-gray-900">
+
+  <nav class="sticky top-0 z-50 bg-green-800 shadow-md">
+    <div class="w-full px-4 md:px-10 py-3 flex items-center justify-between">
+      <a href="index.html" class="text-2xl font-bold text-yellow-300">
+        Helping<span class="text-white">Hand</span>
+      </a>
+      <ul class="hidden md:flex gap-6 text-sm font-medium text-white/80">
+        <li><a href="#" class="hover:text-yellow-300 transition-colors">Home</a></li>
+        <li><a href="#services" class="hover:text-yellow-300 transition-colors">Services</a></li>
+        <li><a href="#reviews" class="hover:text-yellow-300 transition-colors">Reviews</a></li>
+        <li><a href="#faq" class="hover:text-yellow-300 transition-colors">FAQ</a></li>
+        <li><a href="./pages/contact.html" class="hover:text-yellow-300 transition-colors">Contact</a></li>
+      </ul>
+      <div class="flex gap-2">
+        <a href="./pages/login.html"
+          class="px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold border-2 border-white/50 text-white rounded-lg hover:bg-green-700 transition-colors">
+          Login
+        </a>
+        <a href="./pages/signup.html"
+          class="px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold bg-yellow-300 text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors">
+          Sign Up
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="bg-green-800 min-h-screen flex items-center">
+    <div class="max-w-6xl mx-auto px-6 py-20 text-center">
+      <span
+        class="inline-block bg-green-700 text-yellow-300 text-xs font-semibold px-4 py-1 rounded-full mb-4 uppercase tracking-wide">
+        Trusted Home Services
+      </span>
+      <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+        Your Home, <span class="text-yellow-300">Taken Care Of</span>
+      </h1>
+      <p class="text-white/75 text-lg md:text-xl max-w-2xl mx-auto mb-8">
+        Book trusted professionals for cleaning, electrical work, painting, pest control and more.
+        We send the workers to <span class="font-semibold text-white">you</span>.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="./pages/booking.html"
+          class="px-8 py-3 bg-yellow-300 text-gray-900 font-semibold rounded-xl hover:bg-yellow-400 transition-colors shadow-lg">
+          Book a Service
+        </a>
+        <a href="./pages/contact.html"
+          class="px-8 py-3 border-2 border-white/50 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors">
+          Contact Us
+        </a>
+      </div>
+      <div class="mt-14 grid grid-cols-3 gap-6 max-w-lg mx-auto text-center">
+        <div>
+          <p class="text-3xl font-bold text-yellow-300">500+</p>
+          <p class="text-sm text-white/60">Verified Workers</p>
+        </div>
+        <div>
+          <p class="text-3xl font-bold text-yellow-300">10K+</p>
+          <p class="text-sm text-white/60">Happy Customers</p>
+        </div>
+        <div>
+          <p class="text-3xl font-bold text-yellow-300">1</p>
+          <p class="text-sm text-white/60">Cities Covered</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-20 bg-amber-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Our Services</h2>
+        <p class="text-gray-500 mt-2">Click any service to book it right away</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <a href="./pages/booking.html"
+          class="block bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-2 hover:border-green-600 transition-all duration-300 group">
+          <div class="text-4xl mb-4">🧹</div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-800 transition-colors">Housekeeping
+          </h3>
+          <p class="text-gray-500 text-sm mb-4">Deep cleaning, regular maintenance, and tidying of your home or office.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-green-800 font-semibold text-sm">From ৳500/hr</span>
+            <span class="bg-green-50 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Cleaning</span>
+          </div>
+        </a>
+
+        <a href="./pages/booking.html"
+          class="block bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-2 hover:border-green-600 transition-all duration-300 group">
+          <div class="text-4xl mb-4">⚡</div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-800 transition-colors">Electrician</h3>
+          <p class="text-gray-500 text-sm mb-4">Wiring, installation, repairs, and safety checks for your home.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-green-800 font-semibold text-sm">From ৳800/hr</span>
+            <span class="bg-green-50 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Repair</span>
+          </div>
+        </a>
+
+        <a href="./pages/booking.html"
+          class="block bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-2 hover:border-green-600 transition-all duration-300 group">
+          <div class="text-4xl mb-4">🔧</div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-800 transition-colors">Mechanic</h3>
+          <p class="text-gray-500 text-sm mb-4">Vehicle servicing, breakdown help, and routine maintenance.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-green-800 font-semibold text-sm">From ৳600/hr</span>
+            <span class="bg-green-50 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Repair</span>
+          </div>
+        </a>
+
+        <a href="./pages/booking.html"
+          class="block bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-2 hover:border-green-600 transition-all duration-300 group">
+          <div class="text-4xl mb-4">🐛</div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-800 transition-colors">Pest Control
+          </h3>
+          <p class="text-gray-500 text-sm mb-4">Safe extermination of insects, rodents, and pests from your property.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-green-800 font-semibold text-sm">From ৳1,200 flat</span>
+            <span class="bg-green-50 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Health</span>
+          </div>
+        </a>
+
+        <a href="./pages/booking.html"
+          class="block bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-2 hover:border-green-600 transition-all duration-300 group">
+          <div class="text-4xl mb-4">🎨</div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-800 transition-colors">Interior
+            Painting</h3>
+          <p class="text-gray-500 text-sm mb-4">Professional wall painting and interior finishing for your spaces.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-green-800 font-semibold text-sm">From ৳15/sq ft</span>
+            <span class="bg-green-50 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Design</span>
+          </div>
+        </a>
+
+        <a href="./pages/booking.html"
+          class="block bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-2 hover:border-green-600 transition-all duration-300 group">
+          <div class="text-4xl mb-4">🚿</div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-800 transition-colors">Plumbing</h3>
+          <p class="text-gray-500 text-sm mb-4">Pipe repairs, leak fixes, and full plumbing installations.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-green-800 font-semibold text-sm">From ৳700/hr</span>
+            <span class="bg-green-50 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Repair</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" class="py-20 bg-green-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">What Our Customers Say</h2>
+        <p class="text-gray-500 mt-2">Real reviews from real people we've helped</p>
+      </div>
+      <div class="relative">
+        <div class="overflow-hidden rounded-2xl">
+          <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
+
+            <div class="w-full flex-shrink-0 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+              <div class="text-yellow-400 text-2xl mb-4">★★★★★</div>
+              <p class="text-gray-700 text-lg italic mb-6">"The housekeeping team arrived on time and did an amazing
+                job. My apartment has never been this clean. Will definitely book again!"</p>
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-green-800 text-yellow-300 flex items-center justify-center text-lg font-bold">
+                  S</div>
+                <div>
+                  <p class="font-semibold text-gray-900">Samira Hossain</p>
+                  <p class="text-sm text-gray-400">Chittagong</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full flex-shrink-0 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+              <div class="text-yellow-400 text-2xl mb-4">★★★★★</div>
+              <p class="text-gray-700 text-lg italic mb-6">"Called for an electrician late at night, they sent someone
+                within the hour. Fast, professional, and very affordable!"</p>
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-green-800 text-yellow-300 flex items-center justify-center text-lg font-bold">
+                  R</div>
+                <div>
+                  <p class="font-semibold text-gray-900">Rashed Karim</p>
+                  <p class="text-sm text-gray-400">Chittagong</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full flex-shrink-0 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+              <div class="text-yellow-400 text-2xl mb-4">★★★★★</div>
+              <p class="text-gray-700 text-lg italic mb-6">"Got my walls painted beautifully. The worker was polite and
+                cleaned up after finishing. Smooth and stress-free."</p>
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 rounded-full bg-green-800 text-yellow-300 flex items-center justify-center text-lg font-bold">
+                  N</div>
+                <div>
+                  <p class="font-semibold text-gray-900">Nadia Islam</p>
+                  <p class="text-sm text-gray-400">Chittagong</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <button onclick="moveCarousel(-1)"
+          class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white border border-gray-200 shadow-md rounded-full w-10 h-10 flex items-center justify-center hover:bg-green-50 transition-colors text-gray-600 text-lg">‹</button>
+        <button onclick="moveCarousel(1)"
+          class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white border border-gray-200 shadow-md rounded-full w-10 h-10 flex items-center justify-center hover:bg-green-50 transition-colors text-gray-600 text-lg">›</button>
+      </div>
+      <div class="flex justify-center gap-2 mt-6" id="dots">
+        <button onclick="goToSlide(0)" class="w-3 h-3 rounded-full bg-green-800"></button>
+        <button onclick="goToSlide(1)" class="w-3 h-3 rounded-full bg-gray-300"></button>
+        <button onclick="goToSlide(2)" class="w-3 h-3 rounded-full bg-gray-300"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="py-20 bg-amber-50">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <p class="text-gray-500 mt-2">Quick answers to common questions</p>
+      </div>
+      <div class="space-y-3">
+
+        <div class="border border-gray-200 rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)"
+            class="w-full flex items-center justify-between px-6 py-4 text-left font-semibold text-gray-800 hover:bg-green-50 transition-colors">
+            How does Helping Hand work?
+            <span class="faq-icon text-green-800 text-xl font-bold">+</span>
+          </button>
+          <div class="faq-answer hidden px-6 pb-4 text-gray-500 text-sm">
+            You choose a service, fill in your details and preferred date, and we assign one of our trained workers to
+            visit your location.
+          </div>
+        </div>
+
+        <div class="border border-gray-200 rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)"
+            class="w-full flex items-center justify-between px-6 py-4 text-left font-semibold text-gray-800 hover:bg-green-50 transition-colors">
+            Are your workers verified?
+            <span class="faq-icon text-green-800 text-xl font-bold">+</span>
+          </button>
+          <div class="faq-answer hidden px-6 pb-4 text-gray-500 text-sm">
+            Yes. Every worker goes through a background check and skill verification before they can take bookings.
+          </div>
+        </div>
+
+        <div class="border border-gray-200 rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)"
+            class="w-full flex items-center justify-between px-6 py-4 text-left font-semibold text-gray-800 hover:bg-green-50 transition-colors">
+            How do I pay for the service?
+            <span class="faq-icon text-green-800 text-xl font-bold">+</span>
+          </button>
+          <div class="faq-answer hidden px-6 pb-4 text-gray-500 text-sm">
+            You can pay in cash directly to the worker after the job is done.
+          </div>
+        </div>
+
+        <div class="border border-gray-200 rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)"
+            class="w-full flex items-center justify-between px-6 py-4 text-left font-semibold text-gray-800 hover:bg-green-50 transition-colors">
+            Can I cancel or reschedule a booking?
+            <span class="faq-icon text-green-800 text-xl font-bold">+</span>
+          </button>
+          <div class="faq-answer hidden px-6 pb-4 text-gray-500 text-sm">
+            Yes, you can cancel or reschedule up to 2 hours before your booking time via your account or the Contact
+            page.
+          </div>
+        </div>
+
+        <div class="border border-gray-200 rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)"
+            class="w-full flex items-center justify-between px-6 py-4 text-left font-semibold text-gray-800 hover:bg-green-50 transition-colors">
+            What areas do you currently serve?
+            <span class="faq-icon text-green-800 text-xl font-bold">+</span>
+          </button>
+          <div class="faq-answer hidden px-6 pb-4 text-gray-500 text-sm">
+            We currently operate in Chittagong. Expanding to more cities soon!
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-gray-300 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
+        <div>
+          <p class="text-2xl font-bold text-yellow-300 mb-2">Helping<span class="text-white">Hand</span></p>
+          <p class="text-sm text-gray-400 max-w-xs">Connecting you with trusted home service professionals.</p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white uppercase tracking-wider mb-3">Quick Links</p>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-yellow-300 transition-colors">Home</a></li>
+            <li><a href="#services" class="hover:text-yellow-300 transition-colors">Services</a></li>
+            <li><a href="#reviews" class="hover:text-yellow-300 transition-colors">Reviews</a></li>
+            <li><a href="#faq" class="hover:text-yellow-300 transition-colors">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white uppercase tracking-wider mb-3">Contact</p>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li>📧 info@helpinghand.com.bd</li>
+            <li>📞 +880 1700-000000</li>
+            <li>📍 EDU, Noman Society, Chittagong</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-gray-700 mb-6" />
+      <p class="text-center text-sm text-gray-500">
+        © 2026 <span class="text-yellow-300 font-semibold">HelpingHand</span>. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+
+
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
