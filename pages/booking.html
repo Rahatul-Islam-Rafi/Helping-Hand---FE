@@ -14,22 +14,55 @@
   </style>
 </head>
 
-<body class="bg-amber-50 text-gray-900 min-h-screen flex flex-col">
+<body class="bg-amber-50 text-gray-900">
 
-  <nav class="sticky top-0 z-50 bg-green-800 shadow-md">
-    <div class="w-full px-10 py-3 flex items-center justify-between">
-      <a href="../index.html" class="text-2xl font-bold text-yellow-300">Helping<span class="text-white">Hand</span></a>
-      <ul class="hidden md:flex gap-6 text-sm font-medium text-white/80">
-        <li><a href="../index.html" class="hover:text-yellow-300 transition-colors">Home</a></li>
-        <li><a href="contact.html" class="hover:text-yellow-300 transition-colors">Contact</a></li>
-      </ul>
-      <div class="flex gap-3">
-        <a href="login.html"
-          class="px-4 py-2 text-sm font-semibold border-2 border-white/50 text-white rounded-lg hover:bg-green-700 transition-colors">Login</a>
-        <a href="signup.html"
-          class="px-4 py-2 text-sm font-semibold bg-yellow-300 text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors">Sign
-          Up</a>
+  <nav class="bg-green-800 fixed w-full z-50 top-0 start-0 shadow-md border-b border-green-700">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-3">
+
+      <a href="../index.html" class="text-2xl font-bold text-yellow-300">
+        Helping<span class="text-white">Hand</span>
+      </a>
+
+      <div class="flex md:order-2 items-center gap-2">
+        <a href="./login.html"
+          class="hidden md:inline-block px-4 py-2 text-sm font-semibold border-2 border-white/50 text-white rounded-lg hover:bg-green-700 transition-colors">
+          Login
+        </a>
+        <a href="./signup.html"
+          class="hidden md:inline-block px-4 py-2 text-sm font-semibold bg-yellow-300 text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors">
+          Sign Up
+        </a>
+        <button onclick="toggleMenu()" type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-lg md:hidden hover:bg-green-700 focus:outline-none">
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
+          </svg>
+        </button>
       </div>
+
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <ul
+          class="flex flex-col w-full mt-4 md:mt-0 md:flex-row md:gap-6 text-sm font-medium bg-green-900 md:bg-transparent rounded-lg md:rounded-none p-4 md:p-0">
+          <li><a href="../index.html"
+              class="block py-2 px-3 md:p-0 text-white hover:text-yellow-300 transition-colors">Home</a></li>
+          <li><a href="../index.html#services"
+              class="block py-2 px-3 md:p-0 text-white/80 hover:text-yellow-300 transition-colors">Services</a></li>
+          <li><a href="../index.html#reviews"
+              class="block py-2 px-3 md:p-0 text-white/80 hover:text-yellow-300 transition-colors">Reviews</a></li>
+          <li><a href="../index.html#faq"
+              class="block py-2 px-3 md:p-0 text-white/80 hover:text-yellow-300 transition-colors">FAQ</a></li>
+          <li><a href="./contact.html"
+              class="block py-2 px-3 md:p-0 text-white/80 hover:text-yellow-300 transition-colors">Contact</a></li>
+          <li class="flex gap-2 pt-3 mt-1 border-t border-white/20 md:hidden">
+            <a href="./login.html"
+              class="px-4 py-2 text-sm font-semibold border-2 border-white/50 text-white rounded-lg hover:bg-green-700 transition-colors">Login</a>
+            <a href="./signup.html"
+              class="px-4 py-2 text-sm font-semibold bg-yellow-300 text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors">Sign
+              Up</a>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </nav>
 
@@ -143,62 +176,6 @@
     © 2026 <span class="text-yellow-300 font-semibold">HelpingHand</span>. All rights reserved.
   </footer>
 
-  <script>
-    const servicePrices = {
-      'Housekeeping': { rate: 500, flat: false },
-      'Electrician': { rate: 800, flat: false },
-      'Mechanic': { rate: 600, flat: false },
-      'Pest Control': { rate: 1200, flat: true },
-      'Interior Painting': { rate: 900, flat: false },
-      'Plumbing': { rate: 700, flat: false },
-    };
-
-    function calculateBill() {
-      const service = document.getElementById('service-select').value;
-      const hoursSection = document.getElementById('hours-section');
-      const hoursSelect = document.getElementById('hours');
-
-      if (!service) {
-        document.getElementById('bill-summary').classList.add('hidden');
-        hoursSection.classList.remove('hidden');
-        hoursSelect.value = '';
-        return;
-      }
-
-      const pricing = servicePrices[service];
-      if (!pricing) return;
-
-      const display = document.getElementById('selected-service');
-      if (display) display.textContent = '— ' + service;
-
-      if (pricing.flat) {
-        hoursSection.classList.add('hidden');
-        hoursSelect.value = '';
-        document.getElementById('bill-service').textContent = service;
-        document.getElementById('bill-rate').textContent = '৳' + pricing.rate + ' (flat rate)';
-        document.getElementById('bill-hours').textContent = 'N/A';
-        document.getElementById('bill-total').textContent = '৳' + pricing.rate.toLocaleString();
-        const noteEl = document.getElementById('bill-note');
-        noteEl.textContent = '* Fixed flat rate — no hourly charge applies.';
-        noteEl.classList.remove('hidden');
-        document.getElementById('bill-summary').classList.remove('hidden');
-      } else {
-        hoursSection.classList.remove('hidden');
-        const hours = hoursSelect.value;
-        document.getElementById('bill-note').classList.add('hidden');
-        if (!hours) {
-          document.getElementById('bill-summary').classList.add('hidden');
-          return;
-        }
-        const total = pricing.rate * parseInt(hours);
-        document.getElementById('bill-service').textContent = service;
-        document.getElementById('bill-rate').textContent = '৳' + pricing.rate + '/hr';
-        document.getElementById('bill-hours').textContent = hours + (hours === '1' ? ' hour' : ' hours');
-        document.getElementById('bill-total').textContent = '৳' + total.toLocaleString();
-        document.getElementById('bill-summary').classList.remove('hidden');
-      }
-    }
-  </script>
 
   <script src="../js/script.js"></script>
 </body>
