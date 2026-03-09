@@ -69,7 +69,7 @@ This project uses **no custom CSS file**. All styling is done using Tailwind CSS
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 ```
 
-### Color Scheme
+# Color Scheme
 | Color | Tailwind Class | Used For |
 |---|---|---|
 | Dark Green | `bg-green-800` | Navbar, Hero, Buttons |
@@ -78,7 +78,7 @@ This project uses **no custom CSS file**. All styling is done using Tailwind CSS
 | Light Green | `bg-green-50` | Card badges, Bill summary |
 | Dark | `bg-gray-900` | Footer |
 
-### Key Tailwind Features Used
+# Key Tailwind Features Used
 - **Responsive design** → `md:flex`, `lg:grid-cols-3`, `sm:flex-row`
 - **Hover effects** → `hover:shadow-xl`, `hover:-translate-y-2`, `hover:border-green-600`
 - **Transitions** → `transition-all duration-300`
@@ -90,32 +90,17 @@ This project uses **no custom CSS file**. All styling is done using Tailwind CSS
 
 ---
 
-## ⚙️ JavaScript — `script.js`
+# JavaScript — `script.js`
 
-`script.js` handles 3 things across all pages:
+1. **Service Bill Calculator** — A dynamic billing calculator that computes service charges based on user selection. Each service has a defined hourly rate or flat fee. Services like Pest Control use a fixed flat rate, while others such as Housekeeping, Electrician, Mechanic, Interior Painting, and Plumbing are billed per hour. When a user selects a service and specifies the number of hours, the calculator displays a detailed bill summary including service name, rate, hours, and total cost. The hours input is hidden automatically for flat-rate services.
 
-# 1. Carousel — `moveCarousel()`, `goToSlide()`, `updateCarousel()`
-- `moveCarousel(direction)` → moves to next or previous slide using arrow buttons
-- `goToSlide(index)` → jumps directly to a slide using dot buttons
-- `updateCarousel()` → applies `translateX()` to slide the track and updates dot colors (`bg-green-800` for active, `bg-gray-300` for inactive)
+2. **Navigation** — A toggleMenu function handles the mobile navbar by showing or hiding the navigation menu on smaller screens.
 
-# 2. FAQ Accordion — `toggleFaq(button)`
-- Toggles the answer open or closed when a question is clicked
-- Uses Tailwind's `hidden` class to show/hide the answer
-- Changes the icon from `+` to `−` when open, and back to `+` when closed
+3. **Image Carousel** — A manual carousel supports three slides with forward and backward navigation. Dot indicators update in real time to reflect the currently active slide, and the carousel loops seamlessly from the last slide back to the first.
 
-# 3. Form Validation + Submission — `DOMContentLoaded`
-- Waits for the full page to load using `DOMContentLoaded` before finding any forms
-- Attaches a `submit` listener to every `<form>` on the page
-- `event.preventDefault()` stops the page from refreshing on submit
-- Checks all `input[required]`, `select[required]`, and `textarea[required]` fields
-- If any field is **empty** → adds `ring-2 ring-red-500 border-red-400` red ring and shows an alert
-- If a field is **filled** → removes the red ring
-- If **all fields filled** → shows `#success-msg` by removing `hidden`
-- After **4 seconds** → resets the form, hides the success message, hides `#bill-summary`, shows `#hours-section`, and clears `#selected-service`
+4. **FAQ Accordion** — An accordion-style FAQ section allows users to expand or collapse individual answers by clicking on the question. A plus and minus icon provides visual feedback on the open or closed state of each item.
 
-# Billing Calculator — inside `booking.html`
-The billing logic lives directly inside `booking.html` as an inline `<script>`:
+5. **Form Validation and Submission** — All forms on the page share a unified submit handler. On submission, required fields are checked and highlighted in red if left empty. Upon successful validation, a success message is briefly displayed and the form resets automatically after four seconds, along with clearing the bill summary and service display.
 
 # Pricing Table
 | Service | Rate |
@@ -127,35 +112,6 @@ The billing logic lives directly inside `booking.html` as an inline `<script>`:
 | Interior Painting | ৳900/hr |
 | Plumbing | ৳700/hr |
 
-# How it works
-- `calculateBill()` runs every time the service or hours dropdown changes (`onchange`)
-- For **hourly services** → total = rate × hours, hours dropdown is visible
-- For **Pest Control** → flat rate, hours dropdown is hidden automatically, bill shows instantly
-- Bill Summary box is hidden by default and only appears when both service and hours are selected
-
-##  Carousel — inside `index.html`
-
-The reviews carousel is handled by inline JavaScript inside `index.html`:
-- `moveCarousel(direction)` → moves slides using arrow buttons
-- `goToSlide(index)` → jumps to a slide using dot buttons
-- `updateCarousel()` → applies `translateX()` to move the track and swaps dot colors
-
-# FAQ Accordion — inside `index.html`
-
-- `toggleFaq(button)` → closes all open answers first, then opens the clicked one
-- Uses Tailwind's `hidden` class to show/hide answers
-- Changes `+` to `−` icon when open
-
-#  Font
-
-Uses **Poppins** from Google Fonts loaded via:
-```html
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-```
-Applied globally with:
-```css
-body { font-family: 'Poppins', sans-serif; }
-```
 # Tools Used
 
 | Tool | Purpose |
