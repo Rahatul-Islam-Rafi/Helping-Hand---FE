@@ -1,24 +1,19 @@
-# 🤝 Helping Hand — Home Services Booking Website
-
+# Helping Hand — Home Services Booking Website
 A frontend web project built as part of my CSE undergraduate coursework. Helping Hand is a home services booking platform where users can browse services, book a worker, contact the team, and manage their account — all from a clean, responsive interface.
 
----
 
-## 🌐 Live Site
+ # Live Site:
+ https://rahatul-islam-rafi.github.io/Helping-Hand---FE/
 
-👉 [https://Rahatul-Islam-Rafi.github.io/Helping-Hand](https://Rahatul-Islam-Rafi.github.io/Helping-Hand)
 
----
 
-## 📌 About The Project
+#  About The Project
 
-Helping Hand connects customers with trusted home service professionals across Bangladesh. Users can book services like housekeeping, electrical work, plumbing, pest control, interior painting, and vehicle mechanics — all from one place.
+Helping Hand connects customers with trusted home service professionals across Bangladesh. Users can book services like housekeeping, electrical work, plumbing, pest control, interior painting, and vehicle mechanics — all from one place. This project was built entirely using **HTML**, **Tailwind CSS**, and **Vanilla JavaScript** — no frameworks, no libraries, no custom CSS file.
 
-This project was built entirely using **HTML**, **Tailwind CSS**, and **Vanilla JavaScript** — no frameworks, no libraries, no custom CSS file.
 
----
 
-## 📁 Project Structure
+# Project Structure
 
 ```
 Helping-Hand/
@@ -34,11 +29,9 @@ Helping-Hand/
     └── signup.html         → Sign up form
 ```
 
----
+# Pages
 
-## 🖥️ Pages
-
-### `index.html` — Home Page
+# `index.html` — Home Page
 The main landing page. Contains 5 sections:
 - **Navbar** — Sticky navigation bar with logo, links, Login and Sign Up buttons
 - **Hero** — Full screen welcome section with heading, subtext, CTA buttons and stats (500+ workers, 10K+ customers, 3 cities)
@@ -47,9 +40,7 @@ The main landing page. Contains 5 sections:
 - **FAQ** — Accordion style FAQ section — click a question to open/close the answer
 - **Footer** — Dark footer with quick links and contact info
 
----
-
-### `pages/booking.html` — Book a Service
+# `pages/booking.html` — Book a Service
 A booking form where users fill in their details to request a worker. Features:
 - Name, phone, address, service dropdown, preferred date
 - **Hours selector** — choose 1 to 8 hours
@@ -57,26 +48,20 @@ A booking form where users fill in their details to request a worker. Features:
 - **Pest Control special case** — flat rate service, hours dropdown is hidden automatically, bill shows instantly
 - Success message appears after form is submitted, then clears after 2.5 seconds
 
----
-
-### `pages/contact.html` — Contact Us
+# `pages/contact.html` — Contact Us
 Two column layout:
 - Left side: contact form with Name, Email, and Message fields
 - Right side: contact details (address, phone, email, working hours) and average response time badge
 
----
 
-### `pages/login.html` — Login
+# `pages/login.html` — Login
 Simple login form with Email and Password fields. Shows a success message on submit.
 
----
 
-### `pages/signup.html` — Sign Up
+# `pages/signup.html` — Sign Up
 Registration form with Full Name, Email, Phone Number, and Password fields. Shows a success message on submit.
 
----
-
-## 🎨 Styling — Tailwind CSS Only
+# Styling — Tailwind CSS Only
 
 This project uses **no custom CSS file**. All styling is done using Tailwind CSS utility classes loaded via CDN:
 
@@ -107,22 +92,32 @@ This project uses **no custom CSS file**. All styling is done using Tailwind CSS
 
 ## ⚙️ JavaScript — `script.js`
 
-Only one thing is handled in `script.js`:
+`script.js` handles 3 things across all pages:
 
-### Form Validation + Submission
-Applied automatically to all forms on every page:
-- Checks all `required` fields are filled
-- If empty → adds a **red ring** around the empty field using Tailwind classes `ring-2 ring-red-500`
-- If all filled → shows a **green success message** by removing the `hidden` class from `#success-msg`
-- After 2.5 seconds → clears the form, hides the success message, hides the bill summary, and resets the heading
+# 1. Carousel — `moveCarousel()`, `goToSlide()`, `updateCarousel()`
+- `moveCarousel(direction)` → moves to next or previous slide using arrow buttons
+- `goToSlide(index)` → jumps directly to a slide using dot buttons
+- `updateCarousel()` → applies `translateX()` to slide the track and updates dot colors (`bg-green-800` for active, `bg-gray-300` for inactive)
 
----
+# 2. FAQ Accordion — `toggleFaq(button)`
+- Toggles the answer open or closed when a question is clicked
+- Uses Tailwind's `hidden` class to show/hide the answer
+- Changes the icon from `+` to `−` when open, and back to `+` when closed
 
-## 🧮 Billing Calculator — inside `booking.html`
+# 3. Form Validation + Submission — `DOMContentLoaded`
+- Waits for the full page to load using `DOMContentLoaded` before finding any forms
+- Attaches a `submit` listener to every `<form>` on the page
+- `event.preventDefault()` stops the page from refreshing on submit
+- Checks all `input[required]`, `select[required]`, and `textarea[required]` fields
+- If any field is **empty** → adds `ring-2 ring-red-500 border-red-400` red ring and shows an alert
+- If a field is **filled** → removes the red ring
+- If **all fields filled** → shows `#success-msg` by removing `hidden`
+- After **4 seconds** → resets the form, hides the success message, hides `#bill-summary`, shows `#hours-section`, and clears `#selected-service`
 
+# Billing Calculator — inside `booking.html`
 The billing logic lives directly inside `booking.html` as an inline `<script>`:
 
-### Pricing Table
+# Pricing Table
 | Service | Rate |
 |---|---|
 | Housekeeping | ৳500/hr |
@@ -132,13 +127,11 @@ The billing logic lives directly inside `booking.html` as an inline `<script>`:
 | Interior Painting | ৳900/hr |
 | Plumbing | ৳700/hr |
 
-### How it works
+# How it works
 - `calculateBill()` runs every time the service or hours dropdown changes (`onchange`)
 - For **hourly services** → total = rate × hours, hours dropdown is visible
 - For **Pest Control** → flat rate, hours dropdown is hidden automatically, bill shows instantly
 - Bill Summary box is hidden by default and only appears when both service and hours are selected
-
----
 
 ## 🎠 Carousel — inside `index.html`
 
@@ -147,17 +140,13 @@ The reviews carousel is handled by inline JavaScript inside `index.html`:
 - `goToSlide(index)` → jumps to a slide using dot buttons
 - `updateCarousel()` → applies `translateX()` to move the track and swaps dot colors
 
----
-
-## ❓ FAQ Accordion — inside `index.html`
+# FAQ Accordion — inside `index.html`
 
 - `toggleFaq(button)` → closes all open answers first, then opens the clicked one
 - Uses Tailwind's `hidden` class to show/hide answers
 - Changes `+` to `−` icon when open
 
----
-
-## 🔠 Font
+# 🔠 Font
 
 Uses **Poppins** from Google Fonts loaded via:
 ```html
@@ -167,10 +156,7 @@ Applied globally with:
 ```css
 body { font-family: 'Poppins', sans-serif; }
 ```
-
----
-
-## 🛠️ Tools Used
+# Tools Used
 
 | Tool | Purpose |
 |---|---|
@@ -182,8 +168,3 @@ body { font-family: 'Poppins', sans-serif; }
 | VS Code | Code editor |
 
 ---
-
-## 👨‍💻 Author
-
-**Rahatul Islam Rafi**
-CSE Undergraduate Student
