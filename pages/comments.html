@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helping Hand – Comments</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-amber-50 text-gray-900">
+
+    <!-- ── NAVBAR ── -->
+    <nav class="bg-green-800 fixed w-full z-50 top-0 start-0 shadow-md border-b border-green-700">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-3">
+
+            <a href="../index.html" class="text-2xl font-bold text-yellow-300">
+                Helping<span class="text-white">Hand</span>
+            </a>
+
+            <div class="flex md:order-2 items-center gap-2">
+                <a href="./login.html"
+                    class="hidden md:inline-block px-4 py-2 text-sm font-semibold border-2 border-white/50 text-white rounded-lg hover:bg-green-700 transition-colors">
+                    Login
+                </a>
+                <a href="./signup.html"
+                    class="hidden md:inline-block px-4 py-2 text-sm font-semibold bg-yellow-300 text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors">
+                    Sign Up
+                </a>
+                <button onclick="toggleMenu()" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-lg md:hidden hover:bg-green-700 focus:outline-none">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                            d="M5 7h14M5 12h14M5 17h14" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul
+                    class="flex flex-col w-full mt-4 md:mt-0 md:flex-row md:gap-6 text-sm font-medium bg-green-900 md:bg-transparent rounded-lg md:rounded-none p-4 md:p-0">
+                    <li><a href="../index.html"
+                            class="block py-2 px-3 md:p-0 text-white hover:text-yellow-300 transition-colors">Home</a>
+                    </li>
+                    <li><a href="../index.html#services"
+                            class="block py-2 px-3 md:p-0 text-white/80 hover:text-yellow-300 transition-colors">Services</a>
+                    </li>
+                    <li><a href="../index.html#reviews"
+                            class="block py-2 px-3 md:p-0 text-white/80 hover:text-yellow-300 transition-colors">Reviews</a>
+                    </li>
+                    <li><a href="../index.html#faq"
+                            class="block py-2 px-3 md:p-0 text-white/80 hover:text-yellow-300 transition-colors">FAQ</a>
+                    </li>
+                    <li><a href="./comments.html"
+                            class="block py-2 px-3 md:p-0 text-yellow-300 font-semibold transition-colors">Comments</a>
+                    </li>
+                    <li><a href="./contact.html"
+                            class="block py-2 px-3 md:p-0 text-white/80 hover:text-yellow-300 transition-colors">Contact</a>
+                    </li>
+                    <li class="flex gap-2 pt-3 mt-1 border-t border-white/20 md:hidden">
+                        <a href="./login.html"
+                            class="px-4 py-2 text-sm font-semibold border-2 border-white/50 text-white rounded-lg hover:bg-green-700 transition-colors">Login</a>
+                        <a href="./signup.html"
+                            class="px-4 py-2 text-sm font-semibold bg-yellow-300 text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors">Sign
+                            Up</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- ── MAIN ── -->
+    <main class="pt-24 pb-20 px-4 min-h-screen bg-gradient-to-br from-green-50 to-amber-50">
+        <div class="max-w-3xl mx-auto">
+
+            <!-- Heading -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Comments</h2>
+                <p class="text-gray-500 mt-2">Share your experience with Helping Hand</p>
+            </div>
+
+            <!-- Comment Form Box -->
+            <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 mb-10">
+
+                <!-- NOT logged in — shown by default -->
+                <div id="comment-logged-out" class="text-center py-6">
+                    <div class="text-4xl mb-3">💬</div>
+                    <p class="text-gray-700 font-semibold mb-1">Want to leave a comment?</p>
+                    <p class="text-gray-400 text-sm mb-5">You need to be logged in to post a comment.</p>
+                    <div class="flex justify-center gap-3">
+                        <a href="./login.html"
+                            class="px-6 py-2 bg-green-800 text-white text-sm font-semibold rounded-lg hover:bg-green-900 transition-colors">
+                            Login
+                        </a>
+                        <a href="./signup.html"
+                            class="px-6 py-2 border-2 border-green-800 text-green-800 text-sm font-semibold rounded-lg hover:bg-green-50 transition-colors">
+                            Sign Up
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Logged IN — hidden by default, JS shows it -->
+                <div id="comment-logged-in" class="hidden">
+
+                    <!-- User info row -->
+                    <div class="flex items-center gap-3 mb-5">
+                        <div id="comment-avatar"
+                            class="w-10 h-10 rounded-full bg-green-800 text-yellow-300 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                            U
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-800">Commenting as <span id="comment-username"
+                                    class="text-green-800">User</span></p>
+                            <button onclick="logout()"
+                                class="text-xs text-gray-400 hover:text-red-500 transition-colors">Log out</button>
+                        </div>
+                    </div>
+
+                    <!-- Star rating -->
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="text-sm text-gray-600 mr-2">Your Rating:</span>
+                        <button onclick="setRating(1)" data-star="1"
+                            class="star-btn text-2xl text-gray-300 hover:text-yellow-400 transition-colors">★</button>
+                        <button onclick="setRating(2)" data-star="2"
+                            class="star-btn text-2xl text-gray-300 hover:text-yellow-400 transition-colors">★</button>
+                        <button onclick="setRating(3)" data-star="3"
+                            class="star-btn text-2xl text-gray-300 hover:text-yellow-400 transition-colors">★</button>
+                        <button onclick="setRating(4)" data-star="4"
+                            class="star-btn text-2xl text-gray-300 hover:text-yellow-400 transition-colors">★</button>
+                        <button onclick="setRating(5)" data-star="5"
+                            class="star-btn text-2xl text-gray-300 hover:text-yellow-400 transition-colors">★</button>
+                    </div>
+
+                    <!-- Comment textarea -->
+                    <textarea id="comment-input" rows="4" placeholder="Write your comment here..."
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 resize-none mb-3"></textarea>
+
+                    <!-- Error + Submit -->
+                    <p id="comment-error" class="hidden text-red-500 text-xs mb-2">⚠️ Please write a comment and select
+                        a rating.</p>
+                    <div class="flex justify-end">
+                        <button onclick="submitComment()"
+                            class="px-6 py-2 bg-green-800 text-white text-sm font-semibold rounded-lg hover:bg-green-900 transition-colors shadow-sm">
+                            Post Comment
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Comments List -->
+            <div id="comments-list" class="space-y-5">
+                <p id="no-comments-msg" class="text-center text-gray-400 text-sm py-10">
+                    No comments yet. Be the first to share your experience!
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer class="bg-gray-900 text-gray-400 py-5 text-center text-sm">
+        © 2026 <span class="text-yellow-300 font-semibold">HelpingHand</span>. All rights reserved.
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
