@@ -20,7 +20,7 @@ function logout() {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
   localStorage.removeItem("hh_user");
-  window.location.href = "../index.html";
+  window.location.href = "/index.html";
 }
 function showSuccess(id, message) {
   const el = document.getElementById(id);
@@ -148,7 +148,7 @@ function initLogin() {
         saveUser(data.data);
         localStorage.setItem("hh_user", JSON.stringify(data.data));
         showSuccess("success-msg", "✅ Logged in! Redirecting...");
-        setTimeout(() => { window.location.href = "../index.html"; }, 1500);
+        setTimeout(() => { window.location.href = "/index.html"; }, 1500);
       } else {
         showError("success-msg", data.message || "Invalid email or password.");
         btn.textContent = "Login";
