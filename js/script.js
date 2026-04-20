@@ -1,4 +1,4 @@
-const API_URL = "https://helping-hand-backend-xuvw.onrender.com";
+const API_URL = "https://helping-hand-backend-xuvw.onrender.com/api";
 
 // ============================================
 // HELPER FUNCTIONS
