@@ -50,8 +50,8 @@ function toggleMenu() {
 }
 function updateNavbar() {
   const user = getUser();
-  const loginLinks = document.querySelectorAll('a[href*="login.html"]');
-  const signupLinks = document.querySelectorAll('a[href*="signup.html"]');
+  const loginLinks = document.querySelectorAll('a[href*="login"]');
+  const signupLinks = document.querySelectorAll('a[href*="signup"]');
   if (user) {
     loginLinks.forEach(link => {
       link.textContent = user.name.split(" ")[0];
