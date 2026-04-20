@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://helping-hand-backend-xuvw.onrender.com";
 
 // ============================================
 // HELPER FUNCTIONS
@@ -182,7 +182,7 @@ const serviceCategoryMap = {
   "Plumbing": "plumber",
 };
 
-function calculateBill() {
+async function calculateBill() {
   const service = document.getElementById("service-select")?.value;
   const hoursSection = document.getElementById("hours-section");
   const hoursSelect = document.getElementById("hours");
@@ -196,6 +196,23 @@ function calculateBill() {
   if (!pricing) return;
   const display = document.getElementById("selected-service");
   if (display) display.textContent = "— " + service;
+
+  // Fetch a random available worker
+  try {
+    const res = await fetch(API_URL + "/workers");
+    const data = await res.json();
+    if (data.success && data.data.length > 0) {
+      const randomWorker = data.data[Math.floor(Math.random() * data.data.length)];
+      window._assignedWorker = randomWorker;
+      const workerEl = document.getElementById("bill-worker");
+      const workerIdEl = document.getElementById("bill-worker-id");
+      if (workerEl) workerEl.textContent = randomWorker.name;
+      if (workerIdEl) workerIdEl.textContent = "WK-" + randomWorker._id.slice(-5).toUpperCase();
+    }
+  } catch (e) {
+    console.log("Could not fetch worker");
+  }
+
   if (pricing.flat) {
     hoursSection?.classList.add("hidden");
     if (hoursSelect) hoursSelect.value = "";
@@ -283,6 +300,20 @@ function initBooking() {
       const data = await response.json();
       if (data.success) {
         showSuccess("success-msg", "🎉 Booking confirmed! Your code: " + data.data.confirmationCode);
+
+        // Mark assigned worker as unavailable for 1 day
+        if (window._assignedWorker) {
+          try {
+            await fetch(API_URL + "/workers/" + window._assignedWorker._id, {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ days: 1 }),
+            });
+          } catch (e) {
+            console.log("Could not update worker availability");
+          }
+        }
+
         form.reset();
         document.getElementById("bill-summary")?.classList.add("hidden");
       } else {
